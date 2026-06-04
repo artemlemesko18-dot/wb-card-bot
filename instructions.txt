@@ -1,0 +1,29 @@
+WB Card Bot - quick start
+
+1) Install Python 3.11+.
+2) Open terminal in project folder:
+   cd wb_card_bot
+3) Create and activate venv:
+   python -m venv .venv
+   .venv\Scripts\activate
+4) Install dependencies:
+   pip install -r requirements.txt
+5) Configure secrets in config.py or env vars:
+   - BOT_TOKEN
+   - OPENAI_API_KEY
+   - STAR_PACKAGES in config.py (цены в Telegram Stars, валюта XTR)
+   - OPENAI_MODEL (example: gpt-3.5-turbo)
+   - WB_API_TOKEN (for WB categories sync)
+   - ADMIN_USERNAMES (comma-separated, without @), default: guqca
+   - ADMIN_IDS (optional, comma-separated numeric IDs)
+6) Run:
+   python bot.py
+
+Notes:
+- Database file wb_bot.sqlite3 will be created automatically.
+- Image generation uses Pollinations AI via direct GET requests (no API key required).
+- Categories are synchronized from WB API to local wb_categories cache.
+- Default admin settings are created automatically:
+  price_per_generation=10
+  stars_rate=4.5
+  max_generations_per_day=20
