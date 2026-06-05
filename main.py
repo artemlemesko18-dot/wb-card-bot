@@ -78,3 +78,15 @@ class Response:
             "headers": {"Content-Type": "application/json"},
             "body": json.dumps(data)
         }
+
+# ========== НИЖЕ ДОБАВЛЕННЫЙ БЛОК ДЛЯ ЗАПУСКА НА RENDER ==========
+if __name__ == "__main__":
+    import asyncio
+
+    async def start_polling():
+        # Однократно обновляем кэш (флаг cache_updated уже есть)
+        await update_categories_cache()
+        # Запускаем long polling
+        await dp.start_polling(bot)
+
+    asyncio.run(start_polling())
